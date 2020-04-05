@@ -23,7 +23,8 @@ local function PickComments(str)
         end
         index=str:find('/',index+1)
     end
-    return tokens[#tokens+1]=str:sub(last_status_change,#str)
+    tokens[#tokens+1]=str:sub(last_status_change,#str)
+    return tokens
 end
 
 local function PickStrings(tokens,str)
@@ -54,12 +55,15 @@ local function PickStrings(tokens,str)
     return tokens
 end
 
---return function(str)
-function Minify(Str)
-    local Tokens1=PickComments(Str)
+return function(str)
+    local Tokens1=PickComments(str)
     local Tokens2={}
-    for k,i in pairs(Tokens1) do
-        Tokens2[Tokens2+1]=PickStrings(Tokens2)
+    for _,i in pairs(Tokens1) do
+        if i[1]=='code' then
+            Tokens2[Tokens2+1]=i
+        else
+            PickStrings(Tokens2,i)
+        end
     end
     local function RepAll(old,new)
         for k,i in pairs(Tokens2) do
@@ -69,7 +73,7 @@ function Minify(Str)
         end
     end
     local function CompactAll(sym)
-        for k,i in pairs(Tokens) do
+        for k,i in pairs(Tokens2) do
             if i[1]=='code' then
                 local Str=i[2]
                 while Str:find(sym..sym) do
@@ -98,16 +102,3 @@ function Minify(Str)
     end
     return Out
 end
-print(Minify([[
-*{
-    display:  block;  /*
-    margin: 3;  */
-    font-size:67px;
-}
- . a : h ( i > b  < m )          {
-    color:red;;;;q;;
-}
- # a , ]]..'\tb \t\v '..[[        {
-    color:red;;;;q;;
-}
-]]))
