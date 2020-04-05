@@ -1,8 +1,8 @@
 package = "LuaMinify"
 version = "0.1-0"
 source = {
-   url = ""
-   tag = "v1.0",
+   url = "git:github.com/LuaStakky/LuaMinify"
+   tag = "v1.0-0"
 }
 description = {
    summary = "An example for the LuaRocks tutorial.",
@@ -11,7 +11,7 @@ description = {
       Here we would put a detailed, typically
       paragraph-long description.
    ]],
-   homepage = "https://",
+   homepage = "https://github.com/LuaStakky/LuaMinify",
    license = "MIT"
 }
 dependencies = {
