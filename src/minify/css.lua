@@ -54,8 +54,7 @@ local function PickStrings(tokens,str)
     return tokens
 end
 
---return function(str)
-function Minify(Str)
+return function(str)
     local Tokens1=PickComments(Str)
     local Tokens2={}
     for k,i in pairs(Tokens1) do
@@ -98,16 +97,3 @@ function Minify(Str)
     end
     return Out
 end
-print(Minify([[
-*{
-    display:  block;  /*
-    margin: 3;  */
-    font-size:67px;
-}
- . a : h ( i > b  < m )          {
-    color:red;;;;q;;
-}
- # a , ]]..'\tb \t\v '..[[        {
-    color:red;;;;q;;
-}
-]]))
