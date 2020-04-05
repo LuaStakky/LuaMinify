@@ -1,7 +1,7 @@
 package = "LuaMinify"
 version = "0.1-0"
 source = {
-   url = "git:github.com/LuaStakky/LuaMinify"
+   url = "git://github.com/LuaStakky/LuaMinify",
    tag = "v1.0-0"
 }
 description = {
@@ -20,5 +20,5 @@ dependencies = {
 build={
    type="builtin",
    minify="src/minify/init.lua",
-   ["minify.css"]="src/minify/css.lua
+   ["minify.css"]="src/minify/css.lua"
 }
