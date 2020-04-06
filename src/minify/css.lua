@@ -95,6 +95,8 @@ return function(str)
         RepAll(' '..i,i)
     end
     RepAll(';}','}')
+    RepAll('}{}','}')
+    RepAll('}[^{}]-{}','}')
     
     local Out=''
     for _,i in pairs(Tokens2) do
